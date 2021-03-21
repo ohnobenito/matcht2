@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+
+
+/* .table {
+  padding: 0px;
+  position: sticky;
+  overflow-y: scroll !important;
+  opacity: 70%;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  background-color:white;
+} */
+
+th {
+  justify-content: center;
+}
+
+.table tr {
+  padding: 0px;
+  color: black;
+}
+.table-top {
+  padding: auto;
+  text-align: center;
+}
+.wrapper {
+  max-height: calc(100vh - 56px);
+  overflow-y: scroll;
+}
+
+
+.photo {
+  padding-top: 30px;
+}
+
+.jobLink a {
+  color: black;
+  justify-content: center;
+}
+
+.photo {
+  border: 1px solid black;
+  float: right;
+}
+
+.content {
+  position: relative;
+}
+.content .hi {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin: 50px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.hi img {
+  border: 1px solid black;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+ }
+
+ .saveTitle {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid lightgrey;
+    font-family: 'Paytone One', sans-serif;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    font-size: 35px;
+    
+} 
