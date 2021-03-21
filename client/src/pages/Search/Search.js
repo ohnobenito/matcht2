@@ -35,7 +35,7 @@ class Search extends Component {
  
   //WE NEED TO BE ABLE TO GRAB THE INDEX FROM THE ARRAY IT'S DISPLAYING
   //ONCE WE DO THAT WE CAN CHANGE OUT THE CODE SO IT'S 
-  //this.state.jobData[index].title instead of this.state.jobData[7].title
+  //this.state.jobdata[index].title instead of this.state.jobData
   
   handleBtnClick = (event) => {
     event.preventDefault();
@@ -54,7 +54,7 @@ class Search extends Component {
     })
   }
   onSwipe = (job) => {
-    console.log(this.state.jobData)
+    this.saveJob();
 
   }
 
