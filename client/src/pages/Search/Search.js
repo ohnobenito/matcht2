@@ -53,7 +53,7 @@ class Search extends Component {
       candidate_required_location: this.state.jobData[7].candidate_required_location
     })
   }
-  onSwipe = (job) => {
+  onSwipe = () => {
     this.saveJob();
 
   }
