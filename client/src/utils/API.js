@@ -19,8 +19,8 @@ const jobAPI = {
   getLikedJob: function (id) {
     return axios.get("/api/likes/" + id);
   },
-  saveLikedJob: function(likedData) {
-    return axios.post("/api/likes", likedData);
+  saveLikedJob: function(jobData) {
+    return axios.post("/api/likes", jobData);
   },
   deleteLikedJob: function (id) {
     return axios.delete("/api/likes/" + id);

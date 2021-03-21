@@ -33,19 +33,22 @@ class Search extends Component {
     this.setState({ jobData: newJobs });
   };
 
-  handleBtnClick = event => {
-    const newState = { ...this.state }
-      API.saveLikedJob({
-        title: this.state.title,
-        url: this.state.url,
-        job_type: this.state.job_type,
-        candidate_required_location: this.state.candidate_required_location,
-        company_name: this.state.company_name
-      })
-    this.setState(newState);
-    this.loadJobData();
+  handleBtnClick = (event) => {
+    event.preventDefault();
+    const newState = { ...this.state };
+    console.log("Button Clicked");
+    console.log(newState);
+    this.saveJob();
   }
-
+  saveJob = () => {
+    API.saveLikedJob({
+      title: this.state.jobData.title,
+      company_name: this.state.jobData.company_name,
+      url: this.state.jobData.url,
+      job_type: this.state.jobData.job_type,
+      candidate_required_location: this.state.jobData.candidate_required_location
+    })
+  }
   render() {
     return (
       <Form>
