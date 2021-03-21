@@ -32,7 +32,11 @@ class Search extends Component {
     });
     this.setState({ jobData: newJobs });
   };
-
+ 
+  //WE NEED TO BE ABLE TO GRAB THE INDEX FROM THE ARRAY IT'S DISPLAYING
+  //ONCE WE DO THAT WE CAN CHANGE OUT THE CODE SO IT'S 
+  //this.state.jobData[index].title instead of this.state.jobData[7].title
+  
   handleBtnClick = (event) => {
     event.preventDefault();
     const newState = { ...this.state };
@@ -42,13 +46,19 @@ class Search extends Component {
   }
   saveJob = () => {
     API.saveLikedJob({
-      title: this.state.jobData.title,
-      company_name: this.state.jobData.company_name,
-      url: this.state.jobData.url,
-      job_type: this.state.jobData.job_type,
-      candidate_required_location: this.state.jobData.candidate_required_location
+      title: this.state.jobData[7].title,
+      company_name: this.state.jobData[7].company_name,
+      url: this.state.jobData[7].url,
+      job_type: this.state.jobData[7].job_type,
+      candidate_required_location: this.state.jobData[7].candidate_required_location
     })
   }
+  onSwipe = (job) => {
+    console.log(this.state.jobData)
+
+  }
+
+
   render() {
     return (
       <Form>
@@ -69,8 +79,12 @@ class Search extends Component {
               <Form.Row>
                 <div className="container">
                   <div className="row job-card">
-                    {this.state.jobData.map((res) => (
-                      <SwipeCard className="swipe" key={res._id} preventSwipe={["up", "down"]}>
+                    {this.state.jobData.map((res, index, arr) => (
+                      <SwipeCard className="swipe" 
+                      key={res._id} 
+                      preventSwipe={["up", "down"]}
+                      onSwipe={this.onSwipe} job={index}
+                      >
                         <div className="row">
                           <div className="offset-3 col-6 offset-3">
                             <div className="jumbotron jumbotron-fluid">
@@ -84,7 +98,9 @@ class Search extends Component {
                                   {" "}
                                   <a href={res.url}> Link to Posting </a>{" "}
                                 </h6>
-                                <button onClick={this.handleBtnClick}>Save Job to DB</button>
+                                <button 
+                                onClick={this.handleBtnClick} 
+                                key={res[index]}>Save Job to DB</button>
                                 <hr className="my-4" />
                                 <p>{res.description} </p>
                               </div>
