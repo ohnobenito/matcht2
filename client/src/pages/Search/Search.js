@@ -24,6 +24,10 @@ class Search extends Component {
       .catch((err) => console.log(err));
   };
 
+  loadNextJob = () => {
+    API.getJobs()
+  }
+
   handleInputLocationChange = (event) => {
     let newJobs = this.locationSearched.filter((res) => {
       console.log(res.candidate_required_location);
@@ -37,25 +41,42 @@ class Search extends Component {
   //ONCE WE DO THAT WE CAN CHANGE OUT THE CODE SO IT'S 
   //this.state.jobdata[index].title instead of this.state.jobData
   
-  handleBtnClick = (event) => {
-    event.preventDefault();
-    const newState = { ...this.state };
-    console.log("Button Clicked");
-    console.log(newState);
-    this.saveJob();
-  }
-  saveJob = () => {
+  // handleBtnClick = (event) => {
+  //   event.preventDefault();
+  //   const newState = { ...this.state };
+  //   console.log("Button Clicked");
+  //   console.log(newState);
+  //   this.saveJob();
+  // }
+  // saveJob = (e) => {
+  //   let index = e;
+  //   API.saveLikedJob({
+  //     title: this.state.jobData[index].title,
+  //     company_name: this.state.jobData[index].company_name,
+  //     url: this.state.jobData[index].url,
+  //     job_type: this.state.jobData[index].job_type,
+  //     candidate_required_location: this.state.jobData[index].candidate_required_location
+  //   })
+  //   .catch((err) => console.log(err));
+    
+  // }
+  onSwipe = (e, direction) => {
+    let index = e;
+    console.log("you swiped " + direction)
+    if (direction === "right") {
     API.saveLikedJob({
-      title: this.state.jobData[7].title,
-      company_name: this.state.jobData[7].company_name,
-      url: this.state.jobData[7].url,
-      job_type: this.state.jobData[7].job_type,
-      candidate_required_location: this.state.jobData[7].candidate_required_location
+      title: this.state.jobData[index].title,
+      company_name: this.state.jobData[index].company_name,
+      url: this.state.jobData[index].url,
+      job_type: this.state.jobData[index].job_type,
+      candidate_required_location: this.state.jobData[index].candidate_required_location
     })
+    .catch((err) => console.log(err));
+    }
   }
-  onSwipe = () => {
-    this.saveJob();
 
+  onCardLeftScreen =(e) => {
+    console.log("You didn't Like it!")
   }
 
 
@@ -63,7 +84,7 @@ class Search extends Component {
     return (
       <Form>
         <div className="container">
-          <div class="row search">
+          <div className="row search">
             <Form.Group>
               <Form.Row>
                 <Form.Label className="search-header">Search Location </Form.Label>
@@ -83,7 +104,9 @@ class Search extends Component {
                       <SwipeCard className="swipe" 
                       key={res._id} 
                       preventSwipe={["up", "down"]}
-                      onSwipe={this.onSwipe} job={index}
+                      onSwipe={(e) => this.onSwipe(index, e)}
+                      job={index}
+                      onCardLeftScreen={this.onCardLeftScreen()}
                       >
                         <div className="row">
                           <div className="offset-3 col-6 offset-3">
@@ -98,9 +121,11 @@ class Search extends Component {
                                   {" "}
                                   <a href={res.url}> Link to Posting </a>{" "}
                                 </h6>
-                                <button 
-                                onClick={this.handleBtnClick} 
-                                key={res[index]}>Save Job to DB</button>
+                                {/* <button 
+                                onClick={(e) => this.saveJob(index, e)}
+                                key={res[index]}>
+                                  Save Job to DB
+                                  </button> */}
                                 <hr className="my-4" />
                                 <p>{res.description} </p>
                               </div>

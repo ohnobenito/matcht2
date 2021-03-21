@@ -11,6 +11,9 @@
     align-items: center;
     font-size: larger;
 }
+.instruction {
+    color: Black;
+}
 
 #button {
     justify-content: center;
