@@ -65,7 +65,7 @@
 
 .wrapper {
     max-height: calc(100vh - 56px);
-    overflow-y: scroll;
+    
 }
 
 .search-header {
@@ -82,5 +82,6 @@
 body {
     background-color: #fffbd5;
     background-image: linear-gradient(315deg, #960b2e 0%, #fffbd5 74%);
+    overflow-y: scroll;
 
 }
