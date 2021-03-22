@@ -1,18 +1,15 @@
-import React, { useState, useEffect, useContext } from "react";
-import profile from "../../profile.json";
+import React, { useState, useEffect } from "react";
 import API from "../../utils/API";
 import DeleteBtn from "../../components/DeleteBtn/DeleteBtn";
-import Table from "react-bootstrap/Table";
 import "./Profile.css";
-import { AuthContext } from "../../Auth";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Container, Row, Col, Table } from "react-bootstrap";
+import Brand from "../../components/Brand/Brand";
+
 
 function Profile() {
   const [jobsDb, setJobsDb] = useState([]);
-  const { currentUser } = useContext(AuthContext);
-  // When user data base is set up
-  //const [userDb, setUserDb] = useState([]);
 
   useEffect(() => {
     loadJobs();
@@ -31,69 +28,52 @@ function Profile() {
   }
 
   return (
-    <>
-      {jobsDb.length === 0 ? (
-        ""
-      ) : (
-        <div>
-          <div className="content">
-            <div
-              className="card hi"
-              style={{ width: "18rem", height: "18rem" }}
-            >
-              <img
-                src={profile[0].profilePic}
-                alt="profilephoto"
-                width="150"
-                height="150"
-              />{" "}
-              <div className="card-body">
-                <p className="card-text">
-                  Welcome Back, <br />
-                  {currentUser.email}!
-                </p>
-              </div>
-            </div>
-          </div>
 
-          <div className="container">
-            <div className="row">
-              <div className="offset-sm-2 col-sm-8 offset-sm-2">
-                <h5 className="saveTitle">Saved Jobs</h5>
-                <Table striped bordered hover size="lg">
-                  <thead>
-                    <tr>
-                      <th>Job Title</th>
-                      <th>Company</th>
-                      <th>Job Type</th>
-                      <th>Location</th>
-                      <th>Link</th>
-                      <th>Remove</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {jobsDb.map((job) => (
-                      <tr key={job._id}>
-                        <th>{job.title}</th>
-                        <th>{job.company_name}</th>
-                        <th>{job.job_type}</th>
-                        <th>{job.candidate_required_location}</th>
-                        <th className="jobLink">
-                          <a href={job.url}>
-                            <FontAwesomeIcon icon={faLink}></FontAwesomeIcon>
-                          </a>
-                        </th>
-                        <DeleteBtn onClick={() => deleteJob(job._id)} />
+        <Container>
+            <Row className="justify-content-md-center">
+              <Col xs={4} >
+                <Brand />
+              </ Col>
+              <Col xs={7}>
+              <h5 className="saveTitle">Saved Jobs</h5>
+                {jobsDb.length ? (
+                  
+                  <Table striped bordered hover size="lg">
+                    <thead>
+                      <tr>
+                        <th>Job Title</th>
+                        <th>Company</th>
+                        <th>Job Type</th>
+                        <th>Location</th>
+                        <th>Link</th>
+                        <th>Remove</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </Table>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-    </>
+                    </thead>
+                    <tbody>
+                      {jobsDb.map((job) => (
+                        <tr key={job._id}>
+                          <th>{job.title}</th>
+                          <th>{job.company_name}</th>
+                          <th>{job.job_type}</th>
+                          <th>{job.candidate_required_location}</th>
+                          <th className="jobLink">
+                            <a href={job.url}>
+                              <FontAwesomeIcon icon={faLink}></FontAwesomeIcon>
+                            </a>
+                          </th>
+                          <DeleteBtn onClick={() => deleteJob(job._id)} />
+                        </tr>
+                      ))}
+                    </tbody>
+                  </Table>
+                  
+                ) : (
+                  <h3> No Saved Jobs - Go Get Swipin'</h3>
+                )}
+              
+              </Col>
+            </Row>
+          </Container>
   );
 }
 

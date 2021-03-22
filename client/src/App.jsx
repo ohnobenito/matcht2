@@ -5,7 +5,6 @@ import Login from "./pages/Login/Login";
 import Profile from "./pages/Profile/Profile.jsx";
 import Search from "./pages/Search/Search";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Brand from "./components/Brand/Brand";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import { AuthProvider } from "./Auth";
 import SignUp from "./pages/SignUp/SignUp";
@@ -15,7 +14,6 @@ function App() {
     <AuthProvider>
       <Router>
         <div className="wrapper">
-          <Brand />
           <Header />
           <Route exact path="/login">
             <Login />

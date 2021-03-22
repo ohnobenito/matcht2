@@ -12,7 +12,7 @@ function Brand() {
   <nav className="nav nav-bar">
    
     <span>
-     <h1 className="brand text-danger">M <FontAwesomeIcon className="icon" icon={faFire}/> tcht</h1>
+     <h1 className="brand text-danger">M<FontAwesomeIcon className="icon" icon={faFire}/>tch't</h1>
      </span>
 
    </nav>

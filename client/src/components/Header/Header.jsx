@@ -42,6 +42,7 @@ function Header() {
               >
                 Logout
               </button>
+              {/* <Navbar.Brand> Welcome, {currentUser.email}</Navbar.Brand> */}
             </Nav>
           </Navbar.Collapse>
         </Navbar>

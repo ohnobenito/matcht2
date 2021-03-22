@@ -11,6 +11,7 @@
     align-items: center;
     font-size: larger;
 }
+
 .instruction {
     color: Black;
 }
@@ -70,5 +71,16 @@
 .search-header {
     font-size: x-large;
     color: white;
+
+}
+.jumbotron {
+    max-height: 70vh;
+    max-width: 50vw;
+    overflow-y: scroll;
+}
+
+body {
+    background-color: #fffbd5;
+    background-image: linear-gradient(315deg, #960b2e 0%, #fffbd5 74%);
 
 }

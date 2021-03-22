@@ -3,7 +3,8 @@ import "./Search.css";
 import API from "../../utils/API";
 //import JobTable from "../../components/JobTable/JobTable";
 import SwipeCard from "react-tinder-card";
-import { Form, Col } from "react-bootstrap";
+import { Form, Col, Jumbotron } from "react-bootstrap";
+import Brand from "../../components/Brand/Brand";
 
 class Search extends Component {
   state = {
@@ -30,36 +31,13 @@ class Search extends Component {
 
   handleInputLocationChange = (event) => {
     let newJobs = this.locationSearched.filter((res) => {
-      console.log(res.candidate_required_location);
+      //console.log(res.candidate_required_location);
       let searchValue = res.candidate_required_location.toLowerCase();
       return searchValue.indexOf(event.target.value) !== -1;
     });
     this.setState({ jobData: newJobs });
   };
  
-  //WE NEED TO BE ABLE TO GRAB THE INDEX FROM THE ARRAY IT'S DISPLAYING
-  //ONCE WE DO THAT WE CAN CHANGE OUT THE CODE SO IT'S 
-  //this.state.jobdata[index].title instead of this.state.jobData
-  
-  // handleBtnClick = (event) => {
-  //   event.preventDefault();
-  //   const newState = { ...this.state };
-  //   console.log("Button Clicked");
-  //   console.log(newState);
-  //   this.saveJob();
-  // }
-  // saveJob = (e) => {
-  //   let index = e;
-  //   API.saveLikedJob({
-  //     title: this.state.jobData[index].title,
-  //     company_name: this.state.jobData[index].company_name,
-  //     url: this.state.jobData[index].url,
-  //     job_type: this.state.jobData[index].job_type,
-  //     candidate_required_location: this.state.jobData[index].candidate_required_location
-  //   })
-  //   .catch((err) => console.log(err));
-    
-  // }
   onSwipe = (e, direction) => {
     let index = e;
     console.log("you swiped " + direction)
@@ -72,13 +50,16 @@ class Search extends Component {
       candidate_required_location: this.state.jobData[index].candidate_required_location
     })
     .catch((err) => console.log(err));
-    }
+    } 
   }
 
 
 
   render() {
     return (
+      <>
+      <Brand />
+      
       <Form>
         <div className="container">
           <div className="row search">
@@ -90,7 +71,7 @@ class Search extends Component {
                     className="m-1"
                     type="search"
                     placeholder="Country"
-                    onChange={this.handleInputLocationChange.bind(this)}
+                    onChange={(this.handleInputLocationChange.bind(this))}
                   />
                 </Col>
               </Form.Row>
@@ -105,8 +86,8 @@ class Search extends Component {
                       job={index}
                       >
                         <div className="row">
-                          <div className="offset-3 col-6 offset-3">
-                            <div className="jumbotron jumbotron-fluid">
+                          <Col>
+                            <Jumbotron>
                               <div className="container">
                                 <h4 className="display-3"> {res.title} </h4>
                                 <h6>Type: {res.job_type}</h6>
@@ -117,16 +98,11 @@ class Search extends Component {
                                   {" "}
                                   <a href={res.url}> Link to Posting </a>{" "}
                                 </h6>
-                                {/* <button 
-                                onClick={(e) => this.saveJob(index, e)}
-                                key={res[index]}>
-                                  Save Job to DB
-                                  </button> */}
                                 <hr className="my-4" />
                                 <p>{res.description} </p>
                               </div>
-                            </div>
-                          </div>
+                              </Jumbotron>
+                              </Col>
                         </div>
                       </SwipeCard>
                     ))}
@@ -137,6 +113,7 @@ class Search extends Component {
           </div>
         </div>
       </Form>
+      </>
     );
   }
 }

@@ -25,11 +25,13 @@ text-shadow: -1px 4px 8px rgba(6,6,6,0.44);
 .icon {
     color: linear-gradient(315deg, #bf3a30 0%, #864ba2 74%);
     padding-bottom: 4px;
+    padding-left: 1px;
+    padding-right: 1px;
     filter:drop-shadow( -1px 4px 8px rgba(6,6,6,0.44));
 }
 
 
-@media only screen and (max-width: 1250px) {
+@media only screen and (max-width: 1000px) {
     .brand {
       display: none;
     }

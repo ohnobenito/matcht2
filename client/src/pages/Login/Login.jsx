@@ -1,7 +1,7 @@
 import React, { useCallback, useContext } from "react";
 import { Redirect, withRouter } from "react-router";
 import { Link } from "react-router-dom";
-
+import Brand from "../../components/Brand/Brand";
 import app from "../../base";
 import { AuthContext } from "../../Auth";
 import { Form, Button } from "react-bootstrap/";
@@ -30,6 +30,7 @@ const Login = ({ history }) => {
         <Redirect to="/search" />
       ) : (
     <div className="login">
+      <Brand />
       <div className="loginContainer centered">
         <h1 className="m-5 logintitle">Login</h1>
 
