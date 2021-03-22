@@ -2,12 +2,12 @@ import firebase from "firebase/app";
 import "firebase/auth";
 
 const app = firebase.initializeApp({
-  apiKey: process.env.REACT_APP_FIREBASE_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_DOMAIN,
-  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID
+  apiKey: "AIzaSyDtdfS4FkOa-b16mZmmDCYnFBgZGPNhdSk",
+  authDomain: "matcht-22c4b.firebaseapp.com",
+  databaseURL: "https://matcht-22c4b.firebaseio.com",
+  projectId: "matcht-22c4b",
+  storageBucket: "matcht-22c4b.appspot.com",
+  messagingSenderId: "1088275446693"
 });
 
 export default app;
