@@ -3,6 +3,7 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
+const path = require("path");
 
 app.use(morgan("dev"));
 
@@ -27,6 +28,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactjob", {
 });
 
 //Send every request to the react app
+app.use(express.static(path.join(__dirname, "./client/build")));
 app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
