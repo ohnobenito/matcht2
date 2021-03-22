@@ -45,7 +45,7 @@ body {
   /*  background: linear-gradient(to right, #b20a2c, #fffbd5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: scroll;
   height: 100%;
   margin: 0;
   background-repeat: no-repeat;
