@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header/Header";
-import Jobpage from "./pages/Jobpage/Jobpage";
 import Login from "./pages/Login/Login";
 import Profile from "./pages/Profile/Profile.jsx";
 import Search from "./pages/Search/Search";
@@ -27,9 +26,6 @@ function App() {
 
           <PrivateRoute path="/search">
             <Search />
-          </PrivateRoute>
-          <PrivateRoute path="/jobpage">
-            <Jobpage />
           </PrivateRoute>
           <PrivateRoute path="/profile">
             <Profile />

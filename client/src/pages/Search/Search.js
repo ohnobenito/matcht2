@@ -75,9 +75,6 @@ class Search extends Component {
     }
   }
 
-  onCardLeftScreen =(e) => {
-    console.log("You didn't Like it!")
-  }
 
 
   render() {
@@ -106,7 +103,6 @@ class Search extends Component {
                       preventSwipe={["up", "down"]}
                       onSwipe={(e) => this.onSwipe(index, e)}
                       job={index}
-                      onCardLeftScreen={this.onCardLeftScreen()}
                       >
                         <div className="row">
                           <div className="offset-3 col-6 offset-3">

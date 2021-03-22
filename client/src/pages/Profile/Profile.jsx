@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-//import { Link, useParams } from "react-router-dom";
 import profile from "../../profile.json";
 import API from "../../utils/API";
 import DeleteBtn from "../../components/DeleteBtn/DeleteBtn";
@@ -74,7 +73,7 @@ function Profile() {
                   </thead>
                   <tbody>
                     {jobsDb.map((job) => (
-                      <tr key={job.id}>
+                      <tr key={job._id}>
                         <th>{job.title}</th>
                         <th>{job.company_name}</th>
                         <th>{job.job_type}</th>
