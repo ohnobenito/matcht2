@@ -1,15 +1,16 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import "./Search.css";
 import API from "../../utils/API";
 //import JobTable from "../../components/JobTable/JobTable";
 import SwipeCard from "react-tinder-card";
-import { Form, Col } from "react-bootstrap";
-import { AuthContext } from "../../Auth";
+import { Form, Col, Jumbotron } from "react-bootstrap";
+//import { AuthContext } from "../../Auth";
+import Brand from "../../components/Brand/Brand";
 
 function Search() {
   const [jobsData, setJobsData] = useState([]);
   const [locationSearched, setLocationSearched] = useState([]);
-  const { currentUser } = useContext(AuthContext);
+  //const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
     loadJobData();
@@ -73,6 +74,8 @@ function Search() {
   }
 
   return (
+    <>
+    <Brand />
     <Form>
       <div className="container">
         <div className="row search">
@@ -101,34 +104,23 @@ function Search() {
                       onSwipe={(e) => onSwipe(index, e)}
                       job={index}
                     >
-                      <div className="row">
-                        <div className="offset-3 col-6 offset-3">
-                          <div className="jumbotron jumbotron-fluid">
-                            <div className="container">
-                              <h4 className="display-3"> {res.title} </h4>
-                              <h6>Type: {res.job_type}</h6>
-                              <h6>Company: {res.company_name}</h6>
-                              <h6>Category: {res.category}</h6>
-                              <h6>
-                                {" "}
-                                Required Location:{" "}
-                                {res.candidate_required_location}
-                              </h6>
-                              <h6>
-                                {" "}
-                                <a href={res.url}> Link to Posting </a>{" "}
-                              </h6>
-                              {/* <button 
-                                onClick={(e) => this.saveJob(index, e)}
-                                key={res[index]}>
-                                  Save Job to DB
-                                  </button> */}
-                              <hr className="my-4" />
-                              <p>{res.description} </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                          <Col>
+                            <Jumbotron>
+                              <div className="container">
+                                <h4 className="display-3"> {res.title} </h4>
+                                <h6>Type: {res.job_type}</h6>
+                                <h6>Company: {res.company_name}</h6>
+                                <h6>Category: {res.category}</h6>
+                                <h6> Required Location: {res.candidate_required_location}</h6>
+                                <h6>
+                                  {" "}
+                                  <a href={res.url}> Link to Posting </a>{" "}
+                                </h6>
+                                <hr className="my-4" />
+                                <p>{res.description} </p>
+                              </div>
+                            </Jumbotron>
+                          </Col>
                     </SwipeCard>
                   ))}
                 </div>
@@ -138,6 +130,7 @@ function Search() {
         </div>
       </div>
     </Form>
+    </>
   );
 }
 

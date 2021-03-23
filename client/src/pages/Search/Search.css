@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+
 .search {
     height: 40vh;
     display: flex;
@@ -70,7 +73,7 @@
 
 .search-header {
     font-size: x-large;
-    color: white;
+    color: black;
 
 }
 .jumbotron {
